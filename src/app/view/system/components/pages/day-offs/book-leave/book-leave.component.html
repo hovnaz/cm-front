@@ -1,0 +1,80 @@
+
+<div class="content">
+  <a class="closeBookLeave" (click)="closeBookLeave()"></a>
+  <div class="left-sections">
+    <div class="left-section-header">
+      <span>Book your leave time</span>
+    </div>
+    <div class="sections">
+      <div class="tabs">
+        <div class="tab" id="hourly_leave" (click)="clickTab('hourly_leave')" [ngClass]="{'selected':selectedTab==='hourly_leave'}">
+          <span>Hourly Leave</span>
+        </div>
+        <div class="tab" id="day_off" (click)="clickTab('day_off')" [ngClass]="{'selected':selectedTab==='day_off'}">
+          <span>Day off</span>
+        </div>
+        <div class="tab" id="work_remotely" (click)="clickTab('work_remotely')" [ngClass]="{'selected':selectedTab==='work_remotely'}">
+          <span>Work remotely</span>
+        </div>
+        <div class="tab" id="vacation" (click)="clickTab('vacation')" [ngClass]="{'selected':selectedTab==='vacation'}">
+          <span>Vacation</span>
+        </div>
+      </div>
+    </div>
+    <div class="datepicker" [ngSwitch]="selectedTab">
+      <app-hourly-time-selection *ngSwitchCase="'hourly_leave'" (bookedHourData)="getSelectedTime($event)"></app-hourly-time-selection>
+      <app-datepicker-range *ngSwitchCase="'vacation'" [dateRange]=dateRange (dateRangeSelected)="getSelectedDateRange($event)"></app-datepicker-range>
+      <app-datepicker *ngSwitchCase="'day_off'" [date]=dateDayOff (dateSelected)="getSelectedDate($event)"></app-datepicker>
+      <app-datepicker *ngSwitchCase="'work_remotely'" [date]=dateWorkRemotely (dateSelected)="getSelectedDate($event)"></app-datepicker>
+    </div>
+    <div class="description">
+      <textarea placeholder="Description" rows="4"
+      [value]="descriptionText"
+      (input)="descriptionText = $any($event.target).value"
+      (input)="readyForBook()"
+      (output)="readyForBook()"
+      ></textarea>
+    </div>
+  </div>
+
+  <div class="right-section">
+    <div class="right-section-header">
+      <span class="right-section-title">Your request</span>
+    </div>
+    <div class="booked-days" [ngSwitch]="selectedTab">
+      <app-hourly-leave *ngSwitchCase="'hourly_leave'" [displaySelectedTime]="displaySelectedTime" [displayLeaveTime]="displayLeaveTime"></app-hourly-leave>
+      <app-day-off *ngSwitchCase="'day_off'" [displaySelectedDayOffDate]="displaySelectedDayOffDate"></app-day-off>
+      <app-work-remotely *ngSwitchCase="'work_remotely'" [displaySelectedWorkRemotelyDate]="displaySelectedWorkRemotelyDate"></app-work-remotely>
+      <app-vacation *ngSwitchCase="'vacation'" [displaySelectedDateRange]="displaySelectedDateRange"></app-vacation>
+    </div>
+    <div class="right-section-footer">
+      <span class="days annaul">{{userBookedDaysData.annualLeave}} days of Annual Leave</span>
+      <span class="days remaining">{{userBookedDaysData.remainingDays}} days Remaining</span>
+
+      <div *ngIf="!userBookedDaysData.isEditDayOffs">
+        <div class="book-btn" [ngStyle]="!isReadyToBook?{'opacity':'0.4','pointer-events':'none'}:{'opacity':'1','pointer-events': 'all'}">
+          <button type="button" [disabled]="loading" (click)="bookDay()">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+            Book
+          </button>
+        </div>
+      </div>
+
+      <div *ngIf="userBookedDaysData.isEditDayOffs">
+        <div class="book-btn" [ngStyle]="!isReadyToBook?{'opacity':'0.4','pointer-events':'none'}:{'opacity':'1','pointer-events': 'all'}">
+          <button type="button" [disabled]="loading" (click)="bookDay(true)">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+            Update
+          </button>
+        </div>
+        <div class="cancel-btn">
+          <button type="button" [disabled]="loadingCancel" (click)="deleteBookedDay()">
+            <span *ngIf="loadingCancel" class="spinner-border spinner-border-sm mr-1"></span>
+            Cancel leave
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

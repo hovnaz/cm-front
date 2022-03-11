@@ -1,0 +1,156 @@
+<div class="dialog">
+    <div class="left-side">
+        <div class="top-side">
+        <span class="new-event">Create new event</span>
+        <span class="choose-event-type">Choose event type *</span>
+
+    </div>
+    <div class="inputs-block">
+        <form class="modal-form"  [formGroup]="eventForm">
+            <div class="event-types">
+
+                <div *ngFor="let btn of eventTypeButtons;let i = index">
+                   <input (change)="changeEventType(btn)" formControlName="type" class="radio-inputs" type="radio" id="radio-{{i}}" name="type" [value]='btn.event_type'>
+                   <label  [ngClass]="{'default-background':btn.selected}" class="radio-labels" for="radio-{{i}}">{{btn.event_type}}</label>
+                </div>
+           </div>
+        <input [ngClass]="{'invalid-input':eventForm.controls.title.touched && eventForm.controls.title.invalid}"  formControlName="title" placeholder="Event Title *" type="text" class="inputs event-title">
+        <mat-form-field appearance="fill">
+          <mat-select  disableOptionCentering formControlName="organizer_id" placeholder="Organizer" >
+                <mat-option  *ngFor="let topping of allEmployers" [value]="topping.employee_id">{{topping.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-select panelClass="testClass"  [@.disabled]="true" disableOptionCentering formControlName="participants" multiple placeholder="Participators *" >
+            <mat-accordion [@.disabled]="true">
+
+
+                <!-- Frontend -->
+                <mat-expansion-panel [@.disabled]="true">
+                  <mat-expansion-panel-header [@.disabled]="true">
+                    <mat-panel-title>
+                     Frontend Team
+                    </mat-panel-title>
+                  </mat-expansion-panel-header>
+                  <mat-option #matOption (click)="frontendSelect(matOption.selected,frontend)" *ngFor="let frontend of frontendDevelopment" [value]="frontend.employee_id">{{frontend.name}}</mat-option>
+                </mat-expansion-panel>
+                <!-- end frontend -->
+
+                <!-- Backend -->
+                <mat-expansion-panel [@.disabled]="true">
+                  <mat-expansion-panel-header [@.disabled]="true">
+                    <mat-panel-title>
+                     Backend Team
+                    </mat-panel-title>
+                  </mat-expansion-panel-header>
+                  <mat-option #matOption (click)="backendSelect(matOption.selected,backend)" *ngFor="let backend of backendDevelopment" [value]="backend.employee_id">{{backend.name}}</mat-option>
+                </mat-expansion-panel>
+                <!-- end backend -->
+
+
+
+                <!-- Management -->
+                <mat-expansion-panel [@.disabled]="true">
+                  <mat-expansion-panel-header [@.disabled]="true">
+                    <mat-panel-title>
+                    Management
+                    </mat-panel-title>
+                  </mat-expansion-panel-header>
+                  <mat-option #matOption (click)="managementSelect(matOption.selected,management)" *ngFor="let management of management" [value]="management.employee_id">{{management.name}}</mat-option>
+                </mat-expansion-panel>
+                <!-- end Management -->
+
+
+              </mat-accordion>
+            </mat-select>
+          </mat-form-field>
+
+
+        <mat-form-field appearance="fill">
+            <mat-select  disableOptionCentering formControlName="room" placeholder="Rooms *" >
+                  <mat-option  *ngFor="let topping of rooms" [value]="topping">{{topping.title}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+
+
+
+
+        <div class="map-input-div">
+            <img src="../../../../../../../assets/icons/content-icons/location.svg" alt="" class="location">
+        <input [value]="locationValue"  readonly (keyup)="writeLocationOnReview($event)"  [ngClass]="{'invalid-input':eventForm.controls.place.touched && eventForm.controls.place.invalid}"  formControlName="place" placeholder="Location *" type="text" class="inputs map-input">
+    </div>
+
+
+
+      <mat-form-field panelClass="date-class" id="picker-field" class="example-full-width" appearance="fill">
+        <input  placeholder="Event Date *" (dateChange)="dateRangeChange($event)" [ngClass]="{'invalid-input':eventForm.controls.date.touched && eventForm.controls.date.invalid}"  matInput [matDatepicker]="picker">
+        <mat-datepicker-toggle matSuffix [for]="picker">
+          <mat-icon  matDatepickerToggleIcon><img src="../../../../../../../assets/icons//content-icons/calendar-1.svg" alt=""></mat-icon>
+        </mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+
+      <mat-form-field  id="event-field" class="example-full-width" appearance="fill">
+        <img class="event-time-logo" src="../../../../../../../assets/icons/content-icons/event-time.svg" alt="">
+
+        <input type="text"
+               placeholder="Start Time *"
+               aria-label="Number"
+               matInput
+               formControlName="time"
+               [matAutocomplete]="auto"
+               [value]="timeValue"
+               (keyup)="timeWrite($event)"
+               >
+        <mat-autocomplete  autoActiveFirstOption #auto="matAutocomplete">
+          <mat-option (click)="getSelectedTime(topping)" *ngFor="let topping of startTimeList" [value]="topping">
+            {{topping}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+      <div class="duration">
+          <span class="select-duration">Select Duration</span>
+          <div class="duration-box">
+            <div class="duration-btns" *ngFor="let btn of durationButtons;let i = index">
+                
+                <input formControlName="duration" class="radio-inputs" type="radio" id="radio-1-{{i}}" name="duration" [value]='btn.title'>
+                <label class="radio-labels-1" for="radio-1-{{i}}">{{btn.title}}</label>
+             </div>
+            </div>
+      </div>
+      <div class="area-block">
+      <textarea formControlName="description" placeholder="Description" class="area" name="" id="" cols="30" rows="10"></textarea>
+    </div>
+</form>
+    </div>
+    </div>
+    <div class="right-side">
+        <div class="top-side">
+        <div class="add-photo-block">
+            <span class="add-image">Add Image</span>
+            <div *ngIf="fileUrl" class="blured-background"></div>
+            <img *ngIf="fileUrl" class="meeting-img" [src]="fileUrl" alt="">
+            <input accept="image/*" class="camera-event" type="file" name="photo" (change)="loadImage($event)">
+        </div>
+        </div>
+        <div class="bottom-side">
+            <hr class="bottom-line">
+            <span class="event event-type">{{meetingType}}</span>
+            <span *ngIf="date || isUpdate" class="event event-date">{{date}}  <span *ngIf="selectedTime"> at {{selectedTime}} ARM</span></span>
+            <span class="event event-location">{{locationValue}}</span>
+            <button  *ngIf="!isUpdate"  type="submit" [ngClass]="{'enable-create-btn':!eventForm.invalid}" (click)="confirm()"  class="create-event-btn">Create</button>
+            <button *ngIf="isUpdate" type="submit" [ngClass]="{'enable-create-btn':!eventForm.invalid}" (click)="confirm()"  class="create-event-btn">Update</button>
+
+        </div>
+        <div class="close-button">
+        <mat-dialog-actions>
+            <button [disableRipple]="true" id="close-btn" mat-button mat-dialog-close><img src="../../../../../../../assets/icons/content-icons/close.svg" alt=""></button>
+        </mat-dialog-actions>
+    </div>
+    </div>
+
+</div>

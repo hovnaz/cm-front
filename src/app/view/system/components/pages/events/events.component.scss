@@ -1,0 +1,490 @@
+.events::-webkit-scrollbar{
+    width: 8px;
+}
+.events::-webkit-scrollbar-track{
+    box-shadow: inset 3px 2px 6px rgba(65, 64, 64, 0.37);
+    border-radius: 8px;
+    background-color: #F5F5F5;
+}
+.events::-webkit-scrollbar-thumb{
+    border-radius: 5px;
+    box-shadow: inset 3px 2px 6px rgba(100, 100, 100, 0.3);
+    background-color: #11493E;
+}
+.empty{
+    height: 0 !important;
+}
+.events{
+    overflow-y: auto;
+    position: relative;
+    height: 100%;
+    padding: 22px 40px 18px 40px;
+    .top-buttons{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+.show-events-dropdown{
+    display: block;
+}
+    .filter-side{
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        &:hover > .dropdown {
+            cursor: pointer !important;
+        }
+.dropdown{
+    width: max-content;
+    margin-right: 10px;
+.events-dropdown{
+    box-shadow: none !important;
+    background-color: #347474;
+    color: #FCFCFC;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    width: 130px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    &.remove-events{
+        pointer-events: none;
+
+    }
+    .dropdown-arrow{
+        position: absolute;
+        right: 0;
+        top: 0;
+        transform: translate(-10px, 12px);
+
+    }
+    .rotate-arrow{
+        transform: translate(-10px, 12px) rotate(180deg) !important;
+
+    }
+
+}
+.dropdown-toggle::after{
+    display: none;
+}
+    .dropdown-menu {
+        min-width: 8.2rem;
+}
+        .picker-side{
+            position: relative;
+            ::ng-deep{
+                .mat-form-field-wrapper{
+                    padding: 0;
+                }
+                .mat-form-field-appearance-fill .mat-form-field-flex{
+                    padding: 0;
+                }
+                .mat-form-field-type-mat-date-range-input .mat-form-field-infix{
+                    width: 244px;
+                    height: 34px;
+                    background-color: #347474;
+                    border-radius: 4px;
+                    color: #FCFCFC;
+                    font-weight: 500;
+                    font-size: 16px;
+                    border: 0;
+                    padding: 8px 15px 0 32px;
+                    margin: 0;
+                }
+                .mat-form-field-prefix, .mat-form-field-suffix{
+                    display: none;
+                }
+                .mat-form-field-underline {
+                    display: none;
+                }
+
+                .mat-date-range-input-inner{
+                    &::placeholder{
+                        color: #FCFCFC;
+                        font-weight: 500;
+                    }
+                }
+                .mat-date-range-input-container{
+                    justify-content: center;
+                }
+                .mat-calendar-body-cell-content, .mat-date-range-input-separator{
+                    color: #FCFCFC;
+                }
+            }
+            .dropdown-arrow{
+                position: absolute;
+                right: 0;
+                z-index: 9;
+                bottom: 0;
+                transform: translate(-10px, -15px);
+            }
+        }
+
+    }
+    }
+    }
+    ::ng-deep{
+        .mat-form-field-prefix, .mat-form-field-suffix{
+    display: none;
+        }
+        .mat-form-field-wrapper {
+            padding: 0;
+        }
+        .mat-form-field-type-mat-date-range-input .mat-form-field-infix{
+            border: 0;
+        }
+        #picker-id{
+            background-color: #347474;
+            border-radius: 4px;
+            height: 32px;
+            position: relative;
+
+        }
+        .mat-form-field-infix{
+            padding: 0;
+        }
+        .dropdown-arrow{
+            position: absolute;
+            right: 0;
+            transform: translate(-3px, 2px);
+        }
+        .mat-form-field-appearance-fill .mat-form-field-flex{
+            padding: 9px;
+        }
+        .mat-date-range-input-container {
+            justify-content: center;
+        }
+        .mat-date-range-input-inner{
+            color: #FCFCFC;
+            font-weight: 500;
+            &::placeholder{
+                color: #FCFCFC;
+                font-weight: 500;
+            }
+        }
+        .mat-date-range-input-separator{
+            color: #FCFCFC;
+        }
+    }
+    .nearest-container{
+        margin-top: 20px;
+        .nearest-text{
+            color: #616062;
+            font-weight: 500;
+            font-size: 16px;
+        }
+        .nearest-blocks{
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+        .nearest{
+            width: 100%;
+            margin-right: 15px;
+            background-color: white;
+            height: 236px;
+            border-radius: 4px;
+            padding: 31px 20px 31px 20px;
+            position: relative;
+            display: flex;
+            .start-time{
+                color: #616062;
+                font-size: 14px;
+                font-weight: 400;
+                position: absolute;
+                right: 0;
+                top: 0;
+                transform: translate(-28px, 20px);
+                .start-times{
+                    color: #347474;
+                    font-size: 14px;
+                    font-weight: 600;
+                    margin-left: 12px;
+                }
+            }
+            .photo-side{
+                .main-photo{
+                    width: 243px;
+                    height: 174px;
+                    object-fit: cover;
+                    border-radius: 4px;
+                }
+            }
+            .text-side{
+                margin-left: 27px;
+                .title{
+                    color: #11493E;
+                    font-weight: 600;
+                    font-size: 24px;
+                }
+                .date-side{
+                    margin-top: 10px;
+                    .option-img{
+                        margin-right: 7px;
+                    }
+                    .options{
+                        color: #616062;
+                        font-weight: 400;
+                        font-size: 14px;
+                    }
+                    .date{
+                        &::after{
+                            content: "|";
+                            margin-left: 5px;
+                            margin-right: 5px;
+                        }
+                    }
+                    .hour{
+                        &::after{
+                            content: "|";
+                            margin-left: 5px;
+                            margin-right: 5px;
+                        }
+                    }
+                }
+                .organizer-side{
+                    margin-top: 4px;
+                    .option-img{
+                        margin-right: 7px;
+                    }
+                .organizer-name{
+                    color: #616062;
+                    font-weight: 400;
+                    font-size: 14px;
+                }
+                }
+                .desc-side{
+                    margin-top: 7px;
+                    .desc{
+                        color: #949494;
+                        font-weight: 400;
+                        font-size: 14px;
+                    }
+                }
+                .do-something-side{
+                    position: absolute;
+                    right: 0;
+                    bottom: 0;
+                    transform: translate(-30px, -20px);
+                    .group-icon{
+                        margin-right: 16px;
+                    }
+                    .icons{
+                        &:hover{
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+        }
+        .nearest-right-photo{
+            width: 238px;
+            height: 238px;
+            background-color: white;
+            padding-top: 20px;
+            .nearest-photo-text{
+                margin-top: 16px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            .events-count{
+                color: #11493E;
+                font-weight: 600;
+                font-size: 24px;
+                margin-right: 15px;
+            }
+            .events-text{
+                font-weight: 500;
+                font-size: 14px;
+                color: #11493E;
+            }
+            }
+        }
+        }
+        .bottom-blocks{
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            .event-block{
+                margin-right: 12px;
+                height: 368px;
+                width: 280px;
+                background-color: white;
+                margin-top: 20px;
+                border-radius: 4px;
+                .block-img{
+                    border-radius: 4px 4px 0 0;
+                }
+                .content{
+                    padding: 12px;
+                    .title{
+                        color: #11493E;
+                        font-size: 16px;
+                        font-weight: 500;
+                        margin-top: 12px;
+                        display: block;
+                    }
+                    .calendar-options{
+                        margin-top: 8px;
+                        .dates{
+                            display: flex;
+                            align-items: center;
+                            .icons{
+                                margin-right: 8px;
+                            }
+                            .opt{
+                                color: #616062;
+                                font-weight: 400;
+                                font-size: 14px;
+                            }
+                            .date{
+                                &::after{
+                                    content: "|";
+                                    margin: 0 5px 0 5px;
+                                }
+                            }
+                        }
+
+
+                    .location{
+                        margin-top: 6px;
+                        .icons{
+                            margin-right: 8px;
+                        }
+                        .place{
+                            color: #616062;
+                            font-weight: 400;
+                            font-size: 14px;
+                        }
+                    }
+                    .desc{
+                        color: #949494;
+                        font-weight: 400;
+                        font-size: 14px;
+                        margin-top: 21px;
+                        p{
+                            margin: 0;
+                        }
+                    }
+                }
+                    .options{
+                        display: flex;
+                        justify-content: flex-end;
+                        margin-top: 10px;
+                        margin-right: 10px;
+                        .person-gr{
+                            margin-right: 16px;
+                        }
+                    }
+            }
+        }
+    }
+        .past-events{
+            .past-text{
+                color: #616062;
+                font-weight: 500;
+                font-size: 16px;
+
+            }
+            .event-block{
+                margin-right: 12px;
+                height: 368px;
+                width: 280px;
+                background-color: white;
+                margin-top: 20px;
+                border-radius: 4px;
+                .block-img{
+                    border-radius: 4px 4px 0 0;
+                }
+                .content{
+                    padding: 12px;
+                    .title{
+                        color: #11493E;
+                        font-size: 16px;
+                        font-weight: 500;
+                        margin-top: 12px;
+                        display: block;
+                    }
+                    .calendar-options{
+                        margin-top: 8px;
+                        .dates{
+                            display: flex;
+                            align-items: center;
+                            .icons{
+                                margin-right: 8px;
+                            }
+                            .opt{
+                                color: #616062;
+                                font-weight: 400;
+                                font-size: 14px;
+                            }
+                            .date{
+                                &::after{
+                                    content: "|";
+                                    margin: 0 5px 0 5px;
+                                }
+                            }
+                        }
+
+
+                        .location{
+                            margin-top: 6px;
+                            .icons{
+                                margin-right: 8px;
+                            }
+                            .place{
+                                color: #616062;
+                                font-weight: 400;
+                                font-size: 14px;
+                            }
+                        }
+                        .desc{
+                            color: #949494;
+                            font-weight: 400;
+                            font-size: 14px;
+                            margin-top: 21px;
+                            p{
+                                margin: 0;
+                            }
+                        }
+                    }
+                    .options{
+                        display: flex;
+                        justify-content: flex-end;
+                        margin-top: 10px;
+                        margin-right: 10px;
+                        .person-gr{
+                            margin-right: 16px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    }
+::ng-deep.mat-form-field-underline {
+    display: none;
+}
+.rotate-arrow-1{
+    transform: translate(-3px, 4px) rotate(180deg) !important;
+}
+.create-event-btn{
+    width: 122px;
+    height: 32px;
+    background: #38A98E;
+    border-radius: 4px;
+    border: none;
+    font-weight: 500;
+    color: white;
+    font-size: 14px;
+    &:hover{
+        cursor: pointer;
+    }
+}
+
+

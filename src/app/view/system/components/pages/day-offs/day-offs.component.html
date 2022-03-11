@@ -1,0 +1,124 @@
+<div class="day-offs">
+  <div class="booked-leave-block">
+    <span class="booked-leave-title">Booked leave</span>
+    <button class="booked-leave-btn" (click)="openBookLeave()">Book Leave</button>
+  </div>
+  
+  <div class="top-block">
+    <div [ngClass]="{'scroll-class-day-off': scrollClassDayOff,'talbe-hidden-class':!scrollClassDayOff}" class="day-off-cont">
+      <div class="off-table">
+        <div [ngClass]="{'show-loader':!isDataGetted}" class="loader-block">
+          <mat-spinner></mat-spinner>
+        </div>
+        <table mat-table [dataSource]="leavesDataSource" class="mat-elevation-z8 day-off-table">
+
+        
+          <!-- Date Column -->
+          <ng-container matColumnDef="Date">
+            <th class="table-title" mat-header-cell *matHeaderCellDef> Date</th>
+            <td mat-cell *matCellDef="let element"> {{element.start_date}} </td>
+          </ng-container>
+        
+          <!-- Time Column -->
+          <ng-container matColumnDef="Time">
+            <th class="table-title" mat-header-cell *matHeaderCellDef> Time </th>
+            <td mat-cell *matCellDef="let element"> {{element.time}} </td>
+          </ng-container>
+        
+          <!-- Type Column -->
+          <ng-container matColumnDef="Type">
+            <th class="table-title type-column" mat-header-cell *matHeaderCellDef> Type </th>
+            <td mat-cell *matCellDef="let element"> <span class="circle" [ngClass]="{'day-off':element.type==='Day Off','hourly-leave':element.type==='Hourly Leave','work-remoatly':element.type==='Work Remotely'}"></span> {{element.type}} </td>
+          </ng-container>
+        
+          <!-- Amount Column -->
+          <ng-container matColumnDef="Amount">
+            <th class="table-title" mat-header-cell *matHeaderCellDef> Amount </th>
+            <td mat-cell *matCellDef="let element"> {{element.amount}} </td>
+          </ng-container>
+      
+            <!-- Description Column -->
+          <ng-container matColumnDef="Description">
+            <th class="table-title" mat-header-cell *matHeaderCellDef> Description </th>
+            <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+          </ng-container>
+        
+          <tr mat-header-row  *matHeaderRowDef="dayOffColumns sticky: true"></tr>
+          <tr mat-row *matRowDef="let row; columns: dayOffColumns;" (click)="openBookLeave(row.id)"></tr>
+          <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell no-data-td" colspan="9999">
+            No data to show
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    
+    <div class="leave-block">
+      <div [ngClass]="{'show-loader':!isDataGetted}" class="loader-block">
+        <mat-spinner></mat-spinner>
+      </div>
+      <div class="top-side">
+        <span class="annual-live">Annual Leave</span>
+      </div>
+      <div class="content">
+        <ul class="annual-list">
+            <li class="anual-list-li"><span class="anual-spans">Total</span> <span class="anual-spans strong-span"> {{annualTotal}} Working days</span></li>
+            <li class="anual-list-li"><span class="anual-spans">Vacation</span> <span class="anual-spans">{{annualVacation}} Working days</span></li>
+            <li class="anual-list-li"><span class="anual-spans">Day Offs</span> <span class="anual-spans">{{annualDayOffs}} Day offs</span></li>
+            <li class="anual-list-li"><span class="anual-spans">Hours Leaved</span> <span class="anual-spans">{{annualHoursLeave}} Hours leave</span></li>
+            <li class="anual-list-li"><span class="anual-spans">Remaining</span> <span class="anual-spans strong-span">{{remainingDays}} Working day</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="vaccation-block">
+      <span class="vacation-title">Vacations</span>
+      <div [ngClass]="{'scroll-class-vacation':scrollClassVacation,'talbe-hidden-class':!scrollClassVacation}" class="vaccation-table">
+        <div [ngClass]="{'show-loader':!isDataGetted}" class="loader-block">
+          <mat-spinner></mat-spinner>
+        </div>
+        <table mat-table [dataSource]="vacationsDataSrource" class="mat-elevation-z8 day-off-table">
+          <!-- Date Column -->
+          <ng-container matColumnDef="From">
+            <th mat-header-cell *matHeaderCellDef> From</th>
+            <td mat-cell *matCellDef="let element"> {{element.start_date}} </td>
+          </ng-container>
+        
+          <!-- Time Column -->
+          <ng-container matColumnDef="To">
+            <th mat-header-cell *matHeaderCellDef> To </th>
+            <td mat-cell *matCellDef="let element"> {{element.end_date}} </td>
+          </ng-container>
+        
+          <!-- Type Column -->
+          <ng-container matColumnDef="Type">
+            <th class="type-column" mat-header-cell *matHeaderCellDef> Type </th>
+            <td mat-cell *matCellDef="let element"> <span class="circle vaccation-circle"></span> {{element.type}} </td>
+          </ng-container>
+        
+          <!-- Amount Column -->
+          <ng-container matColumnDef="Amount">
+            <th mat-header-cell *matHeaderCellDef> Amount </th>
+            <td mat-cell *matCellDef="let element"> {{element.amount}} </td>
+          </ng-container>
+      
+            <!-- Description Column -->
+          <ng-container matColumnDef="Description">
+            <th mat-header-cell *matHeaderCellDef> Description </th>
+            <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+          </ng-container>
+        
+          <tr mat-header-row *matHeaderRowDef="vacationsColumn sticky: true"></tr>
+          <tr mat-row *matRowDef="let row; columns: vacationsColumn;" (click)="openBookLeave(row.id)"></tr>
+          <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell no-data-td" colspan="9999">
+            No data to show
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>

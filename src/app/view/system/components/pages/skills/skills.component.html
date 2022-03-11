@@ -1,0 +1,55 @@
+<main class="main">
+    <div class="container-chart-header">
+        <div class="chart">
+            <header class="title-block"><h2>Skills progress</h2></header>
+        </div>
+        <div class="lang">
+            <header class="title-block"><h2>Language Skills</h2></header>
+        </div>
+    </div>
+    <div class="container-chart">
+        <div class="item chart" #containerRef>
+            <ngx-charts-line-chart
+                    (window:resize)="onResize(containerRef.offsetWidth)"
+                    [view]="[view? view: containerRef.offsetWidth,170]"
+                    [results]="data"
+                    [xAxis]="true"
+                    [scheme]="colorScheme"
+                    [showGridLines]="false">
+
+            </ngx-charts-line-chart>
+        </div>
+        <div class="item lang">
+                <header><span>updated 20.11.2021</span></header>
+                <div class="content">
+                    <div class="row-line"><span>English</span><span>B2</span></div>
+                    <div class="row-line"><span>Russian</span> <span>A2</span></div>
+                </div>
+                <footer>
+                    <p>
+                        If you want to change your language levels Please follow the link below and pass the test,
+                        after passing test you will see your language levels here.
+                    </p>
+                    <span>pass the test</span>
+                </footer>
+
+
+        </div>
+    </div>
+
+
+    <div class="container-x">
+        <header class="title-block"><h2>All Skills</h2></header>
+        <button (click)="addNewSkills()">Add new skills</button>
+        <div class="content skills-content">
+            <div class="item" *ngFor="let item of skills">
+                <footer>
+
+                    <img *ngFor="let star of [].constructor(5); let i = index" src="/assets/icons/skills/star.svg" [class]="item.rating > i?'star-rating':''" alt="image">
+                </footer>
+                <p>{{item.name}}</p>
+                <img [src]="item.iconPath">
+            </div>
+        </div>
+    </div>
+</main>

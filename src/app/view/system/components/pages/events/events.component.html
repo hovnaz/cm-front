@@ -1,0 +1,240 @@
+<div [ngClass]="{'is-modal':isModalOpened}" class="events">
+    <!--<div [ngClass]="{'show-loader':!isDataGot}" class="loader-block">-->
+        <!--<mat-spinner></mat-spinner>-->
+      <!--</div>-->
+    <div class="top-buttons">
+        <div class="create-side">
+            <button (click)="openModal()" class="create-event-btn">Create Event</button>
+        </div>
+
+        <div class="filter-side">
+            <div class="dropdown">
+                <button [ngClass]="{'remove-events':rotateEventsArrow}"  (click)="openAllEvents()" class="btn btn-secondary dropdown-toggle events-dropdown" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    All events
+                    <img [ngClass]="{'rotate-arrow': rotateEventsArrow}"  class="dropdown-arrow" src="../../../../../../assets/icons/content-icons/arrow-top-dr.svg" alt="">
+                </button>
+                <div (window:mouseup)="autoCloseForEventDropDown($event)" [ngClass]="{'show-events-dropdown': showEventsDropDown}" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">All Events</a>
+                    <a class="dropdown-item" href="#">All Events</a>
+                    <a class="dropdown-item" href="#">All Events</a>
+                </div>
+            </div>
+            <div class="picker-side">
+                <mat-form-field id="picker-id"  (click)="picker.open()" appearance="fill">
+                    <img [ngClass]="{'rotate-arrow-1': rotatePickerArrow}"  class="dropdown-arrow" src="../../../../../../assets/icons/content-icons/arrow-top-dr.svg" alt="">
+
+                    <mat-date-range-input   (click)="clickedCalendar()"  [rangePicker]="picker">
+                        <input [(ngModel)]="startDate" (dateChange)="startDateChange($event)" readonly matStartDate placeholder="Start date">
+                        <input (dateChange)="endDateChange($event)" readonly matEndDate placeholder="End date">
+                    </mat-date-range-input>
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-date-range-picker  (closed)="onClose()" #picker></mat-date-range-picker>
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+
+    <div class="nearest-container">
+        <span class="nearest-text">Nearest Events</span>
+        <div class="nearest-blocks">
+        <div class="nearest">
+            <span class="start-time">Start <span class="start-times">19:00PM</span></span>
+            <div class="photo-side">
+                <img class="main-photo" src="../../../../../../assets/icons/event-photos/group.svg" alt="">
+            </div>
+
+            <div class="text-side">
+                <span class="title">Happy Friday</span>
+                <div class="date-side">
+                    <img class="option-img calendar" src="../../../../../../assets/icons/event-photos/calendar.svg" alt="">
+                <span class="options date">Sat, March 8th, 2022</span>
+                <span class="options hour">19:30 - 21:00</span>
+                <span class="options place">Brain Fors, Meeting room</span>
+                </div>
+                <div class="organizer-side">
+                    <img class="option-img" src="../../../../../../assets/icons/event-photos/person.svg" alt="">
+                    <span class="organizer-name">Organizer - {{currentUser.first_name}} {{currentUser.last_name}}</span>
+                </div>
+                <div class="desc-side">
+                    <p class="desc">Lorem Ipsum is simply dummy text of the printing and typesetting industry
+                        . Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                        when an unknown printer took a galley of type and scrambled it to make a
+                        type specimen book. </p>
+                </div>
+                <div class="do-something-side">
+                    <img class="icons group-icon" src="../../../../../../assets/icons/event-photos/person-group.svg" alt="">
+                    <img class="icons" src="../../../../../../assets/icons/event-photos/edit.svg" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="nearest-right-photo">
+            <img src="../../../../../../assets/icons/content-icons/flat-boy.svg" alt="">
+            <div class="nearest-photo-text">
+            <span class="events-count">5</span>
+            <span class="events-text">Events In this Month</span>
+            </div>
+        </div>
+        </div>
+        <div class="bottom-blocks">
+            <div class="event-block">
+                <img class="block-img" src="../../../../../../assets/icons/event-photos/group1.svg" alt="">
+                <div class="content">
+                    <span class="title">Happy Friday</span>
+                    <div class="calendar-options">
+                    <div class="dates">
+                        <img class="icons" src="../../../../../../assets/icons/event-photos/calendar.svg" alt="">
+                        <span class="opt date">Sat, Mar 9, 2022 </span>
+                        <span class="opt hour">19:30 - 21:00</span>
+                    </div>
+
+                     <div class="location">
+                        <img class="icons" src="../../../../../../assets/icons/event-photos/map.svg" alt="">
+                        <span class="place">Brain Fors | Meeting room</span>
+                    </div>
+                    <div class="desc">
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum ...</p>
+                    </div>
+
+                    </div>
+                    <div class="options">
+                        <img class="person-gr" src="../../../../../../assets/icons/event-photos/person-group.svg" alt="">
+                        <img src="../../../../../../assets/icons/event-photos/edit.svg" alt="">
+                    </div>
+                </div>
+            </div>            <div class="event-block">
+                <img class="block-img" src="../../../../../../assets/icons/event-photos/group2.svg" alt="">
+                <div class="content">
+                    <span class="title">Happy Friday</span>
+                    <div class="calendar-options">
+                    <div class="dates">
+                        <img class="icons" src="../../../../../../assets/icons/event-photos/calendar.svg" alt="">
+                        <span class="opt date">Sat, Mar 9, 2022 </span>
+                        <span class="opt hour">19:30 - 21:00</span>
+                    </div>
+
+                     <div class="location">
+                        <img class="icons" src="../../../../../../assets/icons/event-photos/map.svg" alt="">
+                        <span class="place">Brain Fors | Meeting room</span>
+                    </div>
+                    <div class="desc">
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum ...</p>
+                    </div>
+
+                    </div>
+                    <div class="options">
+                        <img class="person-gr" src="../../../../../../assets/icons/event-photos/person-group.svg" alt="">
+                        <img src="../../../../../../assets/icons/event-photos/edit.svg" alt="">
+                    </div>
+                </div>
+            </div>            <div class="event-block">
+                <img class="block-img" src="../../../../../../assets/icons/event-photos/group3.svg" alt="">
+                <div class="content">
+                    <span class="title">Happy Friday</span>
+                    <div class="calendar-options">
+                    <div class="dates">
+                        <img class="icons" src="../../../../../../assets/icons/event-photos/calendar.svg" alt="">
+                        <span class="opt date">Sat, Mar 9, 2022 </span>
+                        <span class="opt hour">19:30 - 21:00</span>
+                    </div>
+
+                     <div class="location">
+                        <img class="icons" src="../../../../../../assets/icons/event-photos/map.svg" alt="">
+                        <span class="place">Brain Fors | Meeting room</span>
+                    </div>
+                    <div class="desc">
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum ...</p>
+                    </div>
+
+                    </div>
+                    <div class="options">
+                        <img class="person-gr" src="../../../../../../assets/icons/event-photos/person-group.svg" alt="">
+                        <img src="../../../../../../assets/icons/event-photos/edit.svg" alt="">
+                    </div>
+                </div>
+            </div>            <div class="event-block">
+                <img class="block-img" src="../../../../../../assets/icons/event-photos/group4.svg" alt="">
+                <div class="content">
+                    <span class="title">Happy Friday</span>
+                    <div class="calendar-options">
+                    <div class="dates">
+                        <img class="icons" src="../../../../../../assets/icons/event-photos/calendar.svg" alt="">
+                        <span class="opt date">Sat, Mar 9, 2022 </span>
+                        <span class="opt hour">19:30 - 21:00</span>
+                    </div>
+
+                     <div class="location">
+                        <img class="icons" src="../../../../../../assets/icons/event-photos/map.svg" alt="">
+                        <span class="place">Brain Fors | Meeting room</span>
+                    </div>
+                    <div class="desc">
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum ...</p>
+                    </div>
+
+                    </div>
+                    <div class="options">
+                        <img class="person-gr" src="../../../../../../assets/icons/event-photos/person-group.svg" alt="">
+                        <img src="../../../../../../assets/icons/event-photos/edit.svg" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="event-block">
+                <img class="block-img" src="../../../../../../assets/icons/event-photos/group5.svg" alt="">
+                <div class="content">
+                    <span class="title">Happy Friday</span>
+                    <div class="calendar-options">
+                    <div class="dates">
+                        <img class="icons" src="../../../../../../assets/icons/event-photos/calendar.svg" alt="">
+                        <span class="opt date">Sat, Mar 9, 2022</span>
+                        <span class="opt hour">19:30 - 21:00</span>
+                    </div>
+
+                     <div class="location">
+                        <img class="icons" src="../../../../../../assets/icons/event-photos/map.svg" alt="">
+                        <span class="place">Brain Fors | Meeting room</span>
+                    </div>
+                    <div class="desc">
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum ...</p>
+                    </div>
+
+                    </div>
+                    <div class="options">
+                        <img class="person-gr" src="../../../../../../assets/icons/event-photos/person-group.svg" alt="">
+                        <img src="../../../../../../assets/icons/event-photos/edit.svg" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="event-block empty"></div>
+        </div>
+        <div class="past-events">
+            <span class="past-text">Past Events</span>
+
+            <div class="event-block">
+                <img class="block-img" src="../../../../../../assets/icons/event-photos/group6.svg" alt="">
+                <div class="content">
+                    <span class="title">Happy Friday</span>
+                    <div class="calendar-options">
+                        <div class="dates">
+                            <img class="icons" src="../../../../../../assets/icons/event-photos/calendar.svg" alt="">
+                            <span class="opt date">Sat, Mar 9, 2022</span>
+                            <span class="opt hour"> 19:30 - 21:00</span>
+                        </div>
+
+                        <div class="location">
+                            <img class="icons" src="../../../../../../assets/icons/event-photos/map.svg" alt="">
+                            <span class="place">Brain Fors | Meeting room</span>
+                        </div>
+                        <div class="desc">
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum ...</p>
+                        </div>
+
+                    </div>
+                    <div class="options">
+                        <img class="person-gr" src="../../../../../../assets/icons/event-photos/person-group.svg" alt="">
+                        <img src="../../../../../../assets/icons/event-photos/edit.svg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

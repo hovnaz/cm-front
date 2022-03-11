@@ -1,0 +1,47 @@
+<div class="holidays">
+  <div [ngClass]="{'show-loader':!isDataGetted}" class="loader-block">
+    <mat-spinner></mat-spinner>
+  </div>
+  <div class="working-options">
+    <div class="working-day">
+      <span class="square green-square"></span>
+      <span class="working-title">Working day</span>
+    </div>
+    <div class="not-working working-day">
+      <span class="square red-square"></span>
+      <span class="working-title">Not working day</span>
+    </div>
+  </div>
+
+  <div class="neariest-holidays">
+    <span class="nearest-title">Nearest  public holidays</span>
+    <div class="nearest-block">
+      <ng-container  *ngFor="let loopData of holidayData">
+    <div *ngIf="loopData.is_closest"  class="block">
+      <div class="holiday-nearest" >
+        <div class="block-top-side">
+          <span [ngClass]="{'not-working-day':!loopData.is_working_day,'is-working-day':loopData.is_working_day}" class="date">{{loopData.date | date}}</span>
+        </div>
+        <div class="block-bottom-side">
+          <span class="title">{{loopData.title}}</span>
+        </div>
+        </div>
+    </div>
+    </ng-container >
+</div>
+  </div>
+
+  <div class="public-holidays">
+    <span class="title">Public holidays</span>
+    <div class="public-block">
+      <div *ngFor="let loopData of holidayData" class="block">
+          <div class="block-top-side">
+            <span [ngClass]="{'not-working-day':!loopData.is_working_day,'is-working-day':loopData.is_working_day}" class="date">{{loopData.date | date}}</span>
+          </div>
+          <div class="block-bottom-side">
+            <span class="title">{{loopData.title}}</span>
+          </div>
+      </div>
+      </div>
+  </div>
+</div>

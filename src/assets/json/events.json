@@ -1,0 +1,32 @@
+{
+    "events":[
+        {
+            "id":1,
+            "title": "Happy Friday",
+            "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+            "type": "Management",
+            "start_time": "12 : 00 PM",
+            "location": "Gyumri,Alek Manukyan 1",
+            "start_date": "Tue Feb 08 2022 15:44:58 GMT+0400 (Armenia Standard Time)",
+            "end_date": "Tue Feb 09 2022 15:44:58 GMT+0400 (Armenia Standard Time)",
+            "time": "19:30 - 21:00",
+            "image": "../../../../../../assets/icons/content-icons/event-group.svg",
+            "duration": "15 minute",
+            "event_type": "Teambuilding"
+        },
+        {
+            "id":2,
+            "title": "Happy Friday",
+            "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+            "type": "Mobile team",
+            "start_time": "12 : 15 PM",
+            "location": "Gyumri,Alek Manukyan 1",
+            "start_date": "Tue Feb 08 2022 15:44:58 GMT+0400 (Armenia Standard Time)",
+            "end_date": "Tue Feb 20 2022 15:44:58 GMT+0400 (Armenia Standard Time)",
+            "time": "19:30 - 21:00",
+            "image": "../../../../../../assets/icons/content-icons/event-group.svg",
+            "duration": "2 hours",
+            "event_type": "Meeting/Descussion"
+        }
+    ]
+}

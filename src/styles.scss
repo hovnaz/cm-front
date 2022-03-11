@@ -1,0 +1,53 @@
+/* You can add global styles to this file, and also import other style files */
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('assets/fonts/Montserrat/Montserrat-Regular.ttf');
+}
+@font-face {
+  font-family: 'Roboto';
+  src: url('assets/fonts/Roboto/Roboto-Regular.ttf');
+}
+@font-face {
+  font-family: 'Inter';
+  src: url('assets/fonts/Inter/Inter-Regular.ttf');
+}
+
+html, body {overflow: hidden; height: 100%; margin: 0; padding: 0 ;
+  &.cdk-global-scrollblock{
+    overflow: auto;
+  }
+}
+body { font-family: 'Roboto', "Helvetica Neue", sans-serif; }
+.custom-MatDialog::-webkit-scrollbar{
+  width: 5px;
+}
+.custom-MatDialog::-webkit-scrollbar-track{
+	box-shadow: inset 3px 2px 6px rgba(65, 64, 64, 0.37);
+	border-radius: 8px;
+	background-color: #F5F5F5;
+}
+.custom-MatDialog::-webkit-scrollbar-thumb{
+	border-radius: 5px;
+	box-shadow: inset 3px 2px 6px rgba(100, 100, 100, 0.3);
+	background-color: #145e4fa6;
+}
+.custom-MatDialog {
+  width: 900px;
+  max-width: 900px !important;
+  overflow: auto;
+  margin-top: 30px;
+  .mat-dialog-container{
+    margin: 0;
+    padding: 0;
+    border-radius: 4px;
+  }
+}
+@media(max-width: 1152px) {
+  .custom-MatDialog{
+    width: 600px;
+  }
+}
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';

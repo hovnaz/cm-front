@@ -1,0 +1,21 @@
+<div class="selection">
+
+  <div class="time_selection" >
+    <span>{{displayCurrentDay}}</span>
+    <div class="icon_time">
+      <img src="/assets/icons/content-icons/calendar.svg" class="icon" (click)="openTimeList()">
+      <input type="time" class="current_time_input" min="09:00" max="19:00" value="{{displayCurrentTime}}">
+      <span class="toggle" (click)="openTimeList()"><i class="arrow"></i></span>
+    </div>
+    <div class="times_list">
+      <ul id="time_list" [ngClass]="{'toggle_time_list':isOpenTimeList}">
+        <li *ngFor="let el of hoursList" (click)="setStartLeave(el.start_day_time,el.id,el.isTime)" [ngClass]="{'selectedTime':el.isSelected,'disableTime':!el.isTime}">{{el.displayeTime}}</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="select_leave_time" [ngClass]="{'move_select_leave_time':isOpenTimeList}">
+    <button class="leave_time" *ngFor="let el of minutes" value="el.value" (click)="setMinutes(el.value,el.id)" [ngClass]="{'selectedMinute':el.isSelected===true}">{{el.key}}</button>
+  </div>
+
+</div>
