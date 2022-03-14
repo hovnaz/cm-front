@@ -68,10 +68,9 @@ export class SkillsComponent implements OnInit {
     dialogConfig.autoFocus = true;
 
     dialogConfig = {
-      width: '400px',
+      width: '542px',
       // data: this.newSkill
     }
-
     const dialogref = this.dialog.open(AddNewSkillsComponent, dialogConfig);
   }
 }

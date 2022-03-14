@@ -1,0 +1,5 @@
+<div class="content">
+    <span *ngFor="let star of [].constructor(count); let i = index" (click)="checkStar(i)">
+        <i class='bx bx{{_activeStar >= i?"s":""}}-star' ></i>
+    </span>
+</div>

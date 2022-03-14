@@ -39,12 +39,14 @@
 
 
     <div class="container-x">
-        <header class="title-block"><h2>All Skills</h2></header>
-        <button (click)="addNewSkills()">Add new skills</button>
+        <header class="title-block">
+            <h2>All Skills</h2>
+            <button class="btn-newskil" (click)="addNewSkills()">Add new skills</button>
+        </header>
+
         <div class="content skills-content">
             <div class="item" *ngFor="let item of skills">
                 <footer>
-
                     <img *ngFor="let star of [].constructor(5); let i = index" src="/assets/icons/skills/star.svg" [class]="item.rating > i?'star-rating':''" alt="image">
                 </footer>
                 <p>{{item.name}}</p>

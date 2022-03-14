@@ -94,4 +94,13 @@ export class SkillsService {
   ]
   get skills() :SkillsElem[]{return this.SkillsData}
   constructor() { }
+
+  new(value: string,rating:number=0) {
+    const res:SkillsElem = {
+      name:value,
+      iconPath:"assets/icons/skills/python.png",
+      rating:rating,
+    }
+    this.SkillsData.push(res);
+  }
 }

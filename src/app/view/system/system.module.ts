@@ -19,6 +19,7 @@ import { SkillsComponent } from './components/pages/skills/skills.component';
 import {NgxChartsModule} from "@swimlane/ngx-charts";
 import {MatDialogModule} from "@angular/material/dialog";
 import {AddNewSkillsComponent} from "./components/pages/add-new-skills/add-new-skills.component";
+import { StarRatingComponent } from './components/pages/add-new-skills/star-rating/star-rating.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import {AddNewSkillsComponent} from "./components/pages/add-new-skills/add-new-s
     EventsComponent,
     EventModal,
     SkillsComponent,
-    AddNewSkillsComponent
+    AddNewSkillsComponent,
+    StarRatingComponent,
   ],
   imports: [
     CommonModule,

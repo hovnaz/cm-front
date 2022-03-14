@@ -1,3 +1,15 @@
-<!--<p>{{data}}</p>-->
-<input type="text" value="">
-<button (click)="addData()">Add</button>
+<div class="container">
+    <header>
+        <h2>Add new skill</h2>
+        <img src="assets/icons/content-icons/close.svg" mat-dialog-close="">
+    </header>
+
+    <input type="text" #input placeholder="Add skill title">
+    <h3>Rate your skill</h3>
+    <app-star-rating [count]="5" [_activeStar]="2" (activeStar)="checkStar($event)"></app-star-rating>
+
+    <p>
+        or just pass <a href="#">this test</a> which gives a reliable and extensive report about your skills level !
+    </p>
+    <footer><button (click)="addData(input.value)">Add</button></footer>
+</div>
