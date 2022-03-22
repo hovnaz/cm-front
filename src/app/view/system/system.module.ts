@@ -16,10 +16,14 @@ import { EventModal } from './components/pages/events/create-event-modal/event-m
 import { FormsModule, ReactiveFormsModule, } from '@angular/forms';
 import { AngularMaterialModule } from './angular-material.module';
 import { SkillsComponent } from './components/pages/skills/skills.component';
-import {NgxChartsModule} from "@swimlane/ngx-charts";
-import {MatDialogModule} from "@angular/material/dialog";
-import {AddNewSkillsComponent} from "./components/pages/add-new-skills/add-new-skills.component";
-import { StarRatingComponent } from './components/pages/add-new-skills/star-rating/star-rating.component';
+import {NgxChartsModule} from '@swimlane/ngx-charts';
+import {MatDialogModule} from '@angular/material/dialog';
+import {AddNewSkillsComponent} from './components/dialog/add-new-skills/add-new-skills.component';
+
+
+import { StarRatingComponent } from './components/utils/star-rating/star-rating.component';
+import {UpdateSkillComponent} from './components/dialog/update-skill/update-skill.component';
+import {ChooseLanguageComponent} from './components/dialog/choose-language/choose-language.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +40,8 @@ import { StarRatingComponent } from './components/pages/add-new-skills/star-rati
     SkillsComponent,
     AddNewSkillsComponent,
     StarRatingComponent,
+    UpdateSkillComponent,
+    ChooseLanguageComponent
   ],
   imports: [
     CommonModule,

@@ -16,40 +16,39 @@
                     [xAxis]="true"
                     [scheme]="colorScheme"
                     [showGridLines]="false">
-
             </ngx-charts-line-chart>
         </div>
         <div class="item lang">
                 <header><span>updated 20.11.2021</span></header>
                 <div class="content">
-                    <div class="row-line"><span>English</span><span>B2</span></div>
-                    <div class="row-line"><span>Russian</span> <span>A2</span></div>
+                    <ng-container *ngFor="let item of language">
+                        <div class="row-line" *ngIf="item.selected"><span>{{item.language}}</span><span>{{item.level}}</span></div>
+                    </ng-container>
                 </div>
                 <footer>
                     <p>
                         If you want to change your language levels Please follow the link below and pass the test,
                         after passing test you will see your language levels here.
                     </p>
-                    <span>pass the test</span>
+                    <span class="pointer" (click)="chooseLanguage()">pass the test</span>
                 </footer>
 
 
         </div>
     </div>
-
-
     <div class="container-x">
         <header class="title-block">
             <h2>All Skills</h2>
             <button class="btn-newskil" (click)="addNewSkills()">Add new skills</button>
         </header>
 
-        <div class="content skills-content">
-            <div class="item" *ngFor="let item of skills">
+        <div class="content skills-content" >
+            <div class="item" *ngFor="let item of skills;let i=index;" (click)="updateSkill(i)">
                 <footer>
-                    <img *ngFor="let star of [].constructor(5); let i = index" src="/assets/icons/skills/star.svg" [class]="item.rating > i?'star-rating':''" alt="image">
+                    <i class='bx bxs-star' *ngFor="let star of [].constructor(5); let i = index" [class]="item.rating > i?'star-rating':''"></i>
                 </footer>
                 <p>{{item.name}}</p>
+<!--                updateSkill-->
                 <img [src]="item.iconPath">
             </div>
         </div>

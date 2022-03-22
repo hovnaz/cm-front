@@ -1,0 +1,57 @@
+<div class="container">
+    <header>
+        <h2>Choose language</h2>
+        <img src="assets/icons/content-icons/close.svg" mat-dialog-close="">
+    </header>
+
+    <!--    <form action="/action_page.php">-->
+    <!--        <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">-->
+    <!--        <label for="vehicle1"> I have a bike</label><br>-->
+    <!--        <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">-->
+    <!--        <label for="vehicle2"> I have a car</label><br>-->
+    <!--        <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">-->
+    <!--        <label for="vehicle3"> I have a boat</label><br><br>-->
+    <!--        <input type="submit" value="Submit">-->
+    <!--    </form>-->
+
+<!--    <form [formGroup]="form" (submit)="choose(form.value)">-->
+<!--        <div *ngFor="let skill of employees().controls; let i=index">-->
+<!--            <input type="checkbox" [formControlName]="i">-->
+<!--        </div>-->
+<!--        <button type="submit">Choose</button>-->
+<!--    </form>-->
+
+
+
+<!--    <form [formGroup]="form" (submit)="choose(form.value)">-->
+<!--        <div *ngFor="let skill of employees().controls; let i=index" formArrayName="skills">-->
+<!--&lt;!&ndash;                {{skill.value | json}}&ndash;&gt;-->
+<!--            <input type="checkbox" [formControl]="skill">-->
+<!--        </div>-->
+<!--        <button type=”submit”>Submit</button>-->
+<!--    </form>-->
+
+
+<!--    <footer>-->
+<!--        <button (click)="choose(form.value)">Choose </button>-->
+<!--    </footer>-->
+
+
+
+
+    <section>
+        <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+            <div *ngFor="let lang of language; let i=index">
+                {{lang.language}}
+                <input type="checkbox" formArrayName="skills" [checked]="lang.selected" (change)="onCheckboxChange(i)">
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+
+
+
+
+
+
+</div>
